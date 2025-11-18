@@ -5,6 +5,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from model import Produto
 
+# testestests
+
 TOKEN_API_URL = 'https://accounts.spotify.com'
 API_URL = 'https://api.spotify.com'
 
