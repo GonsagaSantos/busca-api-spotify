@@ -1,12 +1,14 @@
 def format_data_before_persist(df_data, api_data):
     df_data = [album for album in df_data if album['album_name'] == api_data['name']]
 
-    if df_data[0]['description'] is None \
-        or df_data[0]['description'] == 'NaN' \
-        or df_data[0]['valor'] == 0:
+    if df_data[0]['description'] is None or df_data[0]['description'] == 'NaN':
             ## Implementar a chamada de API do discogs para complementar esses campos
             pass 
-        
+    
+    api_data['genres'] = (str(api_data['genres'])
+                        .replace('[', '')
+                        .replace(']', '')
+                        .replace("'", ''))
 
     new_album = {
         'id_produto': api_data['id'],
