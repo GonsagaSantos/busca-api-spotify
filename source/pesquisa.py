@@ -1,5 +1,6 @@
 import os
 import sys
+from fastapi import FastAPI
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if PROJECT_ROOT not in sys.path:
@@ -8,13 +9,9 @@ if PROJECT_ROOT not in sys.path:
 from source.api.HTTP.Spotify.service import get_albums_from_api, get_auth_token
 from source.pandas.service import get_albums_from_csv
 
+app = FastAPI()
 
-def main():
-    info = get_albums_from_csv()
-    token_data = get_auth_token()
-    access_token_string = token_data.get('access_token') 
-    
-    get_albums_from_api(access_token_string, info)
-
-if __name__ == '__main__':
-    main()
+@app.get('/processarForms')
+def processarForms():
+    print('hello world')
+    return {"status": "ok", "message": "hello world"}
