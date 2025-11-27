@@ -1,29 +1,23 @@
 {
     "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Python: Run pesquisa.py (source)",
-            "type": "python",
-            "request": "launch",
-            "program": "${workspaceFolder}/source/pesquisa.py",
-            "cwd": "${workspaceFolder}/source",
-            "console": "integratedTerminal",
-            "env": {
-                "PYTHONPATH": "${workspaceFolder}"
-            },
-            "justMyCode": true
-        },
-        {
-            "name": "Python: Run as module (python -m source.pesquisa)",
-            "type": "python",
-            "request": "launch",
-            "module": "source.pesquisa",
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal",
-            "env": {
-                "PYTHONPATH": "${workspaceFolder}"
-            },
-            "justMyCode": true
-        }
-    ]
+  "configurations": [
+    {
+      "name": "Python: FastAPI",
+      "type": "python",
+      "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "request": "launch",
+      "module": "uvicorn",
+      "cwd": "${workspaceFolder}/source",
+      "args": [
+        "pesquisa:app",
+        "--reload",
+        "--port",
+        "3003",
+        "--reload",
+        "--timeout-keep-alive",
+        "3600"
+      ]
+    }
+  ]
 }
+ 

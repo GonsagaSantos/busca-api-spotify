@@ -13,5 +13,8 @@ app = FastAPI()
 
 @app.get('/processarForms')
 def processarForms():
-    print('hello world')
-    return {"status": "ok", "message": "hello world"}
+    info = get_albums_from_csv()
+    token_data = get_auth_token()
+    access_token_string = token_data.get('access_token') 
+    
+    get_albums_from_api(access_token_string, info)
