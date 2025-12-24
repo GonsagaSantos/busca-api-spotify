@@ -1,7 +1,3 @@
-"""
-Módulo para geração segura de IDs incrementais (PKs).
-Usa sequência no banco de dados ou contador em memória com sincronização.
-"""
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import Session
 import os
@@ -11,8 +7,6 @@ engine = create_engine(DATABASE_URL, pool_pre_ping=True)
 
 
 class IDGenerator:
-    """Gerador de IDs incrementais sincronizado com o banco de dados."""
-    
     def __init__(self, table_name='produto', id_column='id_produto'):
         self.table_name = table_name
         self.id_column = id_column
@@ -20,7 +14,6 @@ class IDGenerator:
         self._initialize()
     
     def _initialize(self):
-        """Inicializa o gerador buscando o maior ID existente no banco."""
         try:
             with Session(engine) as session:
                 query = text(f'SELECT MAX({self.id_column}) as max_id FROM {self.table_name}')
