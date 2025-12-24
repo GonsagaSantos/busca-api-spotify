@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
-from source.models.model import Produto
+from models.model import Produto
 
 engine = create_engine('postgresql://postgres:postgres@localhost:5432/discontento', pool_pre_ping=True)
 
